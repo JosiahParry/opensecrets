@@ -14,7 +14,7 @@
 #' @importFrom janitor clean_names
 #' @importFrom jsonlite fromJSON
 #' @export
-cand_contrib <- function(candidate_id = NULL, cycle = NULL, api_key = get_os_key()) {
+cand_contrib <- function(candidate_id = NULL, cycle = 2018, api_key = get_os_key()) {
 
   params <- list(cid = candidate_id,
                  cycle = cycle,
@@ -26,6 +26,7 @@ cand_contrib <- function(candidate_id = NULL, cycle = NULL, api_key = get_os_key
              user_agent("httr")) %>%
     content("text") %>%
     jsonlite::fromJSON()
+
 
   raw_cand <- res$response$contributors$`@attributes`$cand_name
 
