@@ -19,7 +19,7 @@ You can install the released version of opensecrets from
 [GitHub](https://github.com/josiahparry/opensecrets) with:
 
 ``` r
-remotes::install_github("opensecrets")
+remotes::install_github("josiahparry/opensecrets")
 ```
 
 This package is in very experimental phases and is subject to breaking.

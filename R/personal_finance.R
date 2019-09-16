@@ -29,7 +29,7 @@ personal_finance <- function(candidate_id, year = 2016, api_key = get_os_key()) 
     jsonlite::fromJSON()
 
 
-  positions <- pluck(res, "response", "member_profile", "positions", "position")
+  positions <- pluck(res, "response", "member_profile", "positions", "position", "@attributes")
 
   assets <- pluck(res, "response", "member_profile", "assets", "asset", "@attributes")
 

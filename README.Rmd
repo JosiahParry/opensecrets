@@ -73,3 +73,13 @@ ca_legislators %>%
   unnest()
 ```
 
+## Reference Tables
+
+```{r}
+opensecrets::legislators
+```
+
+```{r}
+opensecrets::categories
+```
+
