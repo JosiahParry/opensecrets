@@ -109,3 +109,45 @@ ca_legislators %>%
 #> #   origin <chr>, update_timestamp <chr>, positions <list>, assets <list>,
 #> #   transactions <list>
 ```
+
+## Reference Tables
+
+``` r
+opensecrets::legislators
+#> # A tibble: 555 x 22
+#>    cid   firstlast lastname state party office gender first_elected
+#>    <chr> <chr>     <chr>    <chr> <chr> <chr>  <chr>  <chr>        
+#>  1 N000… Bradley … BYRNE    AL    R     AL01   M      2013         
+#>  2 N000… Martha R… ROBY     AL    R     AL02   F      2010         
+#>  3 N000… Mike D R… ROGERS   AL    R     AL03   M      2002         
+#>  4 N000… Robert B… ADERHOLT AL    R     AL04   M      1996         
+#>  5 N000… Mo Brooks BROOKS   AL    R     AL05   M      2010         
+#>  6 N000… Gary Pal… PALMER   AL    R     AL06   M      2014         
+#>  7 N000… Terri A … SEWELL   AL    D     AL07   F      2010         
+#>  8 N000… Jeff Ses… SESSIONS AL    R     ALS1   M      1996         
+#>  9 N000… Doug Jon… JONES    AL    D     ALS1   M      2017         
+#> 10 N000… Luther S… Strange  AL    R     ALS1   M      2017         
+#> # … with 545 more rows, and 14 more variables: exit_code <chr>,
+#> #   comments <chr>, phone <chr>, fax <chr>, website <chr>, webform <chr>,
+#> #   congress_office <chr>, bioguide_id <chr>, votesmart_id <chr>,
+#> #   feccandid <chr>, twitter_id <chr>, youtube_url <chr>,
+#> #   facebook_id <chr>, birthdate <chr>
+```
+
+``` r
+opensecrets::categories
+#> # A tibble: 459 x 6
+#>    catcode catname            catorder industry         sector  sector_long
+#>    <chr>   <chr>              <chr>    <chr>            <chr>   <chr>      
+#>  1 A0000   Agriculture        A11      Misc Agriculture Agribu… Agribusine…
+#>  2 A1000   Crop production &… A01      Crop Production… Agribu… Agribusine…
+#>  3 A1100   Cotton             A01      Crop Production… Agribu… Agribusine…
+#>  4 A1200   Sugar cane & suga… A01      Crop Production… Agribu… Agribusine…
+#>  5 A1300   Tobacco & Tobacco… A02      Tobacco          Agribu… Agribusine…
+#>  6 A1400   Vegetables, fruit… A01      Crop Production… Agribu… Agribusine…
+#>  7 A1500   Wheat, corn, soyb… A01      Crop Production… Agribu… Agribusine…
+#>  8 A1600   Other commodities… A01      Crop Production… Agribu… Agribusine…
+#>  9 A2000   Milk & dairy prod… A04      Dairy            Agribu… Agribusine…
+#> 10 A2300   Poultry & eggs     A05      Poultry & Eggs   Agribu… Agribusine…
+#> # … with 449 more rows
+```
