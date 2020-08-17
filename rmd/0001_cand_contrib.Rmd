@@ -1,0 +1,104 @@
+	 vim:linebreak:nowrap:nospell tw=78 fo=tqnr foldcolumn=3 
+	 
+--- 
+# Spaces, no Tabs
+title: Template for .Rmd 
+output: 
+  pdf_document: 
+    latex_engine: xelatex
+toc: TRUE 
+toc_depth:  1 
+fontsize: 12pt 
+geometry: margin=0.5in,top=0.25in 
+
+---
+/home/jim/.config/nvim/templates/skeleton.Rmd
+othercomments
+---
+
+<!--  commments -->
+
+```{r setup, include=FALSE		}
+knitr::opts_chunk$set(echo = TRUE,  
+											comment="      ##",  
+											error=TRUE, 
+											collapse=TRUE) 
+```
+
+```{r library, include=FALSE		}
+library(jimTools) 
+load_all()
+``` 
+
+```{r render, eval=FALSE	} 
+file <- "" 
+file  <- basename(file) 
+dir <-"rmd"
+
+jimTools::ren_pdf(file,dir)
+jimTools::ren_github(file, dir)
+```
+
+```{r begin}
+
+
+#
+set_os_key(Sys.getenv("API_KEY"))
+
+# Susan Bonimici
+candidate_id  <- "N00033474"
+b  <- cand_contrib(candidate_id, 
+												 cycle = 2020, 
+												 api_key = get_os_key()) 
+b
+```
+```{r cand_contrib}
+names(b)
+
+```
+
+```{r }
+# source code
+candidate_id  <- "N00033474"
+cycle  <- 2020
+api_key  <- get_os_key()
+
+params <- list(cid = candidate_id,
+                 cycle = cycle,
+                 apikey = api_key,
+                 output = "json")
+
+res <- GET("https://www.opensecrets.org/api/?method=candContrib",
+             query = params,
+             user_agent("httr")) %>%
+    content("text") %>%
+    jsonlite::fromJSON()
+
+	# mess
+purrr::pluck(res, "response", contributors, "@attributes", "cand_name")
+
+						 
+  raw_cand <- res$response$contributors$`@attributes`$cand_name
+raw_cand
+  raw_cand <- res$response$contributors$`@attributes`
+raw_cand
+```
+
+
+***
+
+```{r knit_exit()} 
+knitr::knit_exit() 
+```
+
+
+Parameters
+apikey:	(required) Your API Key
+id:	(required) two character state code or specific CID
+output:	(optional) Output format, either json, xml, or doc; default is xml
+Example Call
+http://www.opensecrets.org/api/?method=getLegislators&id=NJ&apikey=__apikey__
+Response Details
+
+
+

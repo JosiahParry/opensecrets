@@ -1,0 +1,80 @@
+	 vim:linebreak:nowrap:nospell tw=78 fo=tqnr foldcolumn=3 
+
+--- 
+# Spaces, no Tabs
+title: Template for .Rmd 
+output: 
+  pdf_document: 
+    latex_engine: xelatex
+toc: TRUE 
+toc_depth:  1 
+fontsize: 12pt 
+geometry: margin=0.5in,top=0.25in 
+
+---
+/home/jim/.config/nvim/templates/skeleton.Rmd
+othercomments
+---
+
+<!--  commments -->
+
+```{r setup, include=FALSE		}
+knitr::opts_chunk$set(echo = TRUE,  
+											comment="      ##",  
+											error=TRUE, 
+											collapse=TRUE) 
+```
+
+```{r library, include=FALSE		}
+library(jimTools) 
+load_all()
+``` 
+
+```{r render, eval=FALSE	} 
+file <- "" 
+file  <- basename(file) 
+dir <-"rmd"
+
+jimTools::ren_pdf(file,dir)
+jimTools::ren_github(file, dir)
+```
+
+```{r begin}
+
+
+# set in .Rprofile
+set_os_key(Sys.getenv("API_KEY"))
+
+t  <- get_legislators( state="OR",
+									api_key = get_os_key())	
+
+```
+
+```{r examine_candidates}
+names(t)
+
+# 1st name, Bonamici cid =?
+t$cid[[1]]
+
+# SAME
+purrr::pluck(t,"cid", 1)
+
+```
+
+***
+
+```{r knit_exit()} 
+knitr::knit_exit() 
+```
+
+
+Parameters
+apikey:	(required) Your API Key
+id:	(required) two character state code or specific CID
+output:	(optional) Output format, either json, xml, or doc; default is xml
+Example Call
+http://www.opensecrets.org/api/?method=getLegislators&id=NJ&apikey=__apikey__
+Response Details
+
+
+

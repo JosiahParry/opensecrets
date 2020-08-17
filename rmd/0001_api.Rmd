@@ -1,0 +1,61 @@
+
+	 vim:linebreak:nowrap:nospell tw=81 fo=tqlnr foldcolumn=3 
+	 
+--- 
+# Spaces, no Tabs
+title: Template for .Rmd 
+output: 
+  pdf_document: 
+    latex_engine: xelatex
+toc: TRUE 
+toc_depth:  1 
+fontsize: 12pt 
+geometry: margin=0.5in,top=0.25in 
+
+---
+/home/jim/.config/nvim/templates/skeleton.Rmd
+othercomments
+---
+
+<!--  commments -->
+
+```{r setup, include=FALSE		}
+knitr::opts_chunk$set(echo = TRUE,  
+											comment="      ##",  
+											error=TRUE, 
+											collapse=TRUE) 
+```
+
+```{r library, include=FALSE		}
+library(jimTools) 
+``` 
+
+```{r render, eval=FALSE	} 
+file <- "" 
+file  <- basename(file) 
+dir <-"rmd"
+
+jimTools::ren_pdf(file,dir)
+jimTools::ren_github(file, dir)
+```
+
+```{r begin}
+```
+
+***
+
+```{r knit_exit()} 
+knitr::knit_exit() 
+```
+
+
+Parameters
+apikey:	(required) Your API Key
+id:	(required) two character state code or specific CID
+output:	(optional) Output format, either json, xml, or doc; default is xml
+Example Call
+http://www.opensecrets.org/api/?method=getLegislators&id=NJ&apikey=__apikey__
+Response Details
+
+
+
