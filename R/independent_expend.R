@@ -19,6 +19,7 @@ independent_expend <- function(api_key = get_os_key()) {
   res <- GET("http://www.opensecrets.org/api/?method=independentExpend",
              query = params,
              user_agent("httr")) %>%
+		httr::stop_for_status() %>% 
     content("text") %>%
     jsonlite::fromJSON()
 
