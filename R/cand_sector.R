@@ -20,11 +20,11 @@ cand_sector <- function(candidate_id, cycle = 2018, api_key = get_os_key()) {
                  cycle = 2018,
                  apikey = api_key)
 
-  res <- GET("http://www.opensecrets.org/api/?method=candSector",
+  res <- httr::GET("http://www.opensecrets.org/api/?method=candSector",
              query = params,
-             user_agent("httr")) %>%
+             httr::user_agent("httr")) %>%
 		httr::stop_for_status() %>% 
-    content("text") %>%
+    httr::content("text") %>%
     jsonlite::fromJSON()
 
   res%>%
