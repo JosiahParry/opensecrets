@@ -1,11 +1,10 @@
 Package: opensecrets
 Title: Access OpenSecrets API from R
-Version: 0.0.0.9000
-Authors@R: 
-    person(given = "Josiah",
-           family = "Parry",
-           role = c("aut", "cre"),
-           email = "josiah.parrry@gmail.com")
+Version: 0.0.0.9001
+Authors@R: c(
+  person(given = "Josiah", family = "Parry", role = c("aut", "cre"), email =
+	"josiah.parrry@gmail.com"),
+	person("jim", "rothstein", role="ctb", email="jimrothstein@gmail.com"))
 Description: This package is a reimagining of the R wrapper for the OpenSecrets API.
 License: MIT
 Encoding: UTF-8

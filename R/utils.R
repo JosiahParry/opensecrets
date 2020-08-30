@@ -7,7 +7,7 @@ set_os_key <- function(api_key) {
 }
 
 
-
+#' @export
 get_os_key <- function() {
   # taken from https://cran.r-project.org/web/packages/httr/vignettes/api-packages.html
   pat <- Sys.getenv('OS_KEY')
