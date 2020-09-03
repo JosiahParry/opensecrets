@@ -25,7 +25,6 @@ personal_finance <- function(candidate_id, year = 2016, api_key = get_os_key()) 
   res <- GET("https://www.opensecrets.org/api/?method=memPFDprofile",
              query = params,
              user_agent("httr")) %>%
-		httr::stop_for_status() %>% 
     content("text") %>%
     jsonlite::fromJSON()
 

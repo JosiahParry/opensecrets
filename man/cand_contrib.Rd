@@ -4,7 +4,8 @@
 \alias{cand_contrib}
 \title{Top contributor to specific candidate}
 \usage{
-cand_contrib(candidate_id = NULL, cycle = 2018, api_key = get_os_key())
+cand_contrib(candidate_id = NULL, cycle = 2018,
+  api_key = get_os_key())
 }
 \arguments{
 \item{candidate_id}{Candidate ID}

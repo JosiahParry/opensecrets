@@ -22,7 +22,6 @@ cand_industry <- function(candidate_id, cycle = 2018, api_key = get_os_key()) {
   res <- GET("https://www.opensecrets.org/api/?method=candIndustry",
              query = params,
              user_agent("httr")) %>%
-		httr::stop_for_status() %>% 	
     content("text") %>%
     jsonlite::fromJSON()
 

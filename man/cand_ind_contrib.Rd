@@ -4,12 +4,8 @@
 \alias{cand_ind_contrib}
 \title{Candidate contributions by specified industry}
 \usage{
-cand_ind_contrib(
-  candidate_id,
-  industry_id,
-  cycle = 2018,
-  api_key = get_os_key()
-)
+cand_ind_contrib(candidate_id, industry_id, cycle = 2018,
+  api_key = get_os_key())
 }
 \arguments{
 \item{candidate_id}{Candidate ID}

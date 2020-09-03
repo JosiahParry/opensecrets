@@ -24,7 +24,6 @@ committee_ind  <- function(committee_id, industry_id, session = 115, api_key = g
   res <- GET("https://www.opensecrets.org/api/?method=congCmteIndus",
              query = params,
              user_agent("httr")) %>%
-		httr::stop_for_status() %>% 
     content("text") %>%
     jsonlite::fromJSON()
 

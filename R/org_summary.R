@@ -24,7 +24,6 @@ org_summary <- function(org_id, api_key = get_os_key()) {
              query = params,
              user_agent("httr")) %>%
     content("text") %>%
-		httr::stop_for_status() %>% 
     jsonlite::fromJSON()
 
   pluck(res, "response", "organization", "@attributes") %>%

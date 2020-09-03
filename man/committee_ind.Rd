@@ -4,7 +4,8 @@
 \alias{committee_ind}
 \title{Congressional committee donations by industry}
 \usage{
-committee_ind(committee_id, industry_id, session = 115, api_key = get_os_key())
+committee_ind(committee_id, industry_id, session = 115,
+  api_key = get_os_key())
 }
 \arguments{
 \item{committee_id}{Committee ID in CQ format}
