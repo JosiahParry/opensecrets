@@ -5,8 +5,7 @@
 \title{Candidate Summary
 Provides summary fundraising information for specified politician}
 \usage{
-cand_summary(candidate_id = NULL, cycle = NULL,
-  api_key = get_os_key())
+cand_summary(candidate_id = NULL, cycle = NULL, api_key = get_os_key())
 }
 \arguments{
 \item{candidate_id}{CandidateID}

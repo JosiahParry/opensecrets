@@ -33,6 +33,7 @@ cand_ind_contrib <- function(candidate_id, industry_id, cycle = 2018, api_key = 
       user_agent("httr")) %>%
     content("text") %>%
     jsonlite::fromJSON() %>%
+		httr::stop_for_status() %>% 
     pluck("response", "candIndus", "@attributes") %>%
     unlist() %>%
     tibble(cols = names(.),

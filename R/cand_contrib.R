@@ -24,6 +24,7 @@ cand_contrib <- function(candidate_id = NULL, cycle = 2018, api_key = get_os_key
   res <- GET("https://www.opensecrets.org/api/?method=candContrib",
              query = params,
              user_agent("httr")) %>%
+		httr::stop_for_status() %>% 
     content("text") %>%
     jsonlite::fromJSON()
 
