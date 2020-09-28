@@ -19,3 +19,5 @@ Imports:
     magrittr,
     tidyr,
     stringr
+Suggests: 
+    testthat

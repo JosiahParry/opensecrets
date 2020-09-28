@@ -1,12 +1,14 @@
-#' Set OpenSecrets API Key	 
+#' Set OpenSecrets ENV variable OS_KEY
 #'
 #' Set OpenSecrets API Key to ENV variable OS_KEY.  More information about the
 #' API can be found here: https://www.opensecrets.org/resources/create/apis.php
 #'
 #' @param api_key OpenSecrets API Key 
 #' @export
-set_os_key <- function(api_key) {
-
+set_os_key <- function(api_key = NULL) {
+  if (is.null(api_key)) stop("Please enter api_key")	
+	if (!is.character(api_key)) stop("api_key must be character")
+	if (identical(api_key,"")) stop("Please enter api_key")
   Sys.setenv(OS_KEY = api_key)
 
 }

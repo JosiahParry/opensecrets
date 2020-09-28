@@ -2,9 +2,9 @@
 % Please edit documentation in R/utils.R
 \name{set_os_key}
 \alias{set_os_key}
-\title{Set OpenSecrets API Key}
+\title{Set OpenSecrets ENV variable OS_KEY}
 \usage{
-set_os_key(api_key)
+set_os_key(api_key = NULL)
 }
 \arguments{
 \item{api_key}{OpenSecrets API Key}
