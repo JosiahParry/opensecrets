@@ -11,6 +11,11 @@
 #' @importFrom stringr str_remove
 #' @importFrom jsonlite fromJSON
 get_legislators <- function(state = NULL, api_key = get_os_key()) {
+	stopifnot(!is.null(state),
+						is.character(state),
+						length(state) ==1)
+
+
   params <- list(id = state,
                  apikey = api_key,
                  output = "json")
@@ -23,8 +28,12 @@ get_legislators <- function(state = NULL, api_key = get_os_key()) {
     content("text") %>%
     jsonlite::fromJSON(flatten = TRUE)
 
+
   res[[1]][[1]] %>%
     rename_all(str_remove, "@attributes.") %>%
     janitor::clean_names() %>%
     as_tibble()
 }
+
+
+

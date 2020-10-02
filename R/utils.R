@@ -1,6 +1,6 @@
-#' Set OpenSecrets ENV variable OS_KEY
+#' Set OpenSecrets environment variable \code{OS_KEY}
 #'
-#' Set OpenSecrets API Key to ENV variable OS_KEY.  More information about the
+#' Set OpenSecrets API Key to environment variable OS_KEY.  More information about the
 #' API can be found here: https://www.opensecrets.org/resources/create/apis.php
 #'
 #' @param api_key OpenSecrets API Key 
@@ -14,9 +14,9 @@ set_os_key <- function(api_key = NULL) {
 }
 
 
-#' Retrieve ENV variable OS_KEY
+#' Retrieve environment variable \code{OS_KEY}
 #'
-#' Returns ENV variable OS_KEY.  See set_os_key() to set. 
+#' Returns environment variable OS_KEY.  See set_os_key() to set. 
 #'
 #' @export
 get_os_key <- function() {

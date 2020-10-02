@@ -2,7 +2,6 @@ context("test get_legislators()")
 library(tibble)
 
 
-state  <- "OR"
 
 SKIP_previously_tested  <- FALSE	  
 SKIP_slow  <- FALSE		 
@@ -16,9 +15,12 @@ test_that("state", {
 
 test_that("tibble", {
 						skip_if(SKIP_slow, "too slow")
+						state  <- "OR"
+
 						expect_true(is_tibble(get_legislators(state, get_os_key())))
 						expect_true(is_tibble(get_legislators("ND", get_os_key())))
 
+						expect_equal(nrow(get_legislators(state, get_os_key())), 7)
 						expect_equal(nrow(get_legislators("OR", get_os_key())), 7)
 						expect_equal(nrow(get_legislators("ND", get_os_key())), 3)
 })
@@ -28,6 +30,6 @@ test_that("tibble", {
 
 test_that("always succeed", succeed())
 test_that("always fail", {
-						fail()
+						expect_error(fail())
 })
 

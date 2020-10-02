@@ -2,10 +2,10 @@
 % Please edit documentation in R/utils.R
 \name{get_os_key}
 \alias{get_os_key}
-\title{Retrieve ENV variable OS_KEY}
+\title{Retrieve environment variable \code{OS_KEY}}
 \usage{
 get_os_key()
 }
 \description{
-Returns ENV variable OS_KEY.  See set_os_key() to set.
+Returns environment variable OS_KEY.  See set_os_key() to set.
 }
