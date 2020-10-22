@@ -2,10 +2,27 @@
 % Please edit documentation in R/get_legislators.R
 \name{get_legislators}
 \alias{get_legislators}
-\title{Get Legislators}
+\title{@title Get Legislators}
 \usage{
-get_legislators(state = NULL, api_key = get_os_key())
+get_legislators(arg = NULL, api_key = get_os_key())
 }
 \description{
+@description
+}
+\details{
 Provides a list of 115th Congressional legislators and associated attributes for specified subset (state or specific CID)
+
+ @details get_legislators() returns tibble with information for either all
+ legislators for a state, or information about one specific legislator.  If
+ `arg` has 2 characters, the function searches for state.   If `arg` has 9
+ characters, the function searches for specific legislator.  If `arg` is
+ neither or does not pass pattern checks, an error is returned.
+
+ TODO:   try json(simplifyDataFrame=TRUE)
+ The `res` response from GET API call is slightly different if `arg` is
+ state or if `arg` is a legislator.   This requires 2 ways to convert to res
+ into the appropriate tibble.  In particular, in case of legislator the
+ field names include `@attributes` that must be removed.
+ @param arg Either (1) 2-letter state code or (2) 9-letter candidate_id
+ (cid)
 }

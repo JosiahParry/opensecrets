@@ -4,7 +4,7 @@
 \alias{process_legislators}
 \title{@title process_legislators}
 \usage{
-process_legislators(res = NULL)
+process_legislators(res = NULL, type = NULL)
 }
 \description{
 @description helper function to handle response (from API call)
@@ -12,4 +12,5 @@ process_legislators(res = NULL)
 \details{
 @details  NOT exported
  @param res response from API call
+ @param type Type of information `state` or `legislator` to be processed.
 }
