@@ -3,21 +3,15 @@
 #' Provides sector total of specified politician's receipt
 #'
 #' @param candidate_id candidate ID
-#' @param cycle 2012, 2014, 2016; leave blank for latest cycle
+#' @param cycle 2012, 2014, 2016, 2018; leave blank for latest cycle
 #'
-#'
-#' @importFrom httr GET user_agent content
-#' @importFrom tibble as_tibble
-#' @importFrom magrittr %>%
-#' @importFrom purrr pluck
-#' @importFrom dplyr mutate select
-#' @importFrom jsonlite fromJSON
+#
 #' @export
 cand_sector <- function(candidate_id, cycle = 2018, api_key = get_os_key()) {
 
   params <- list(cid = candidate_id,
                  output = "json",
-                 cycle = 2018,
+                 cycle = cycle,
                  apikey = api_key)
 
   res <- httr::GET("http://www.opensecrets.org/api/?method=candSector",
@@ -27,13 +21,30 @@ cand_sector <- function(candidate_id, cycle = 2018, api_key = get_os_key()) {
     httr::content("text") %>%
     jsonlite::fromJSON()
 
+# process res
+  #
+# NOTE:
+# pluck(res, "response", "sectors", "@attribute") returns list of candid info
+# pluck(res, "response", "sectors", "sector", "@attributes") returns tibble of
+    # money.
+    
+# candidate_info is a LIST    
+  candidate_info  <- res %>% pluck("response", "sectors", "@attributes")
+
+# Extract party from "cand_name" in 2 steps
   res%>%
     pluck("response", "sectors", "sector", "@attributes") %>%
-    mutate(candidate = cand_name,
-           party = cand_party,
-           cycle = res$response$sectors$`@attributes`$cycle,
-           cid = res$response$sectors$`@attributes`$cid)%>%
+    mutate(candidate = candidate_info[["cand_name"]],
+           party = stringr::str_extract( 
+              stringr::str_extract( candidate_info[["cand_name"]], "\\(.\\)"), 
+             "[:upper:]"),
+
+           cycle = candidate_info[["cycle"]],
+           cid = candidate_info[["cid"]]
+           ) %>% 
     select(candidate, party, cycle, everything()) %>%
     as_tibble()
+  }
 
-}
+
+

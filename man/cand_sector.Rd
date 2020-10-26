@@ -9,7 +9,7 @@ cand_sector(candidate_id, cycle = 2018, api_key = get_os_key())
 \arguments{
 \item{candidate_id}{candidate ID}
 
-\item{cycle}{2012, 2014, 2016; leave blank for latest cycle}
+\item{cycle}{2012, 2014, 2016, 2018; leave blank for latest cycle}
 }
 \description{
 Provides sector total of specified politician's receipt
