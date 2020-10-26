@@ -1,4 +1,20 @@
 context("test get_legislators()")
+library(tibble)
+# ================================
+# EASIER, using jsonlite?
+
+apikey  <- Sys.getenv("API_KEY")
+nj  <- jsonlite::fromJSON( 
+paste0("http://www.opensecrets.org/api/?method=getLegislators&id=NJ&apikey=", 
+       apikey, "&output=json"))
+nj
+
+# best choice
+t  <- tibble::as_tibble(purrr::pluck(nj, "response", "legislator",
+                                     "@attributes"))
+t # 14 x 21
+# ================================
+
 
 after_restart  <- function() {
   # setup (after restart R)
@@ -6,35 +22,30 @@ after_restart  <- function() {
   set_os_key(Sys.getenv("API_KEY"))
   api_key  <- get_os_key()
 
+}
+if (FALSE ) {
+  after_restart()
   # misc sample 
     # Bonamici 
     state = "OR"
     candidate_id  <- "N00033474"
-    arg = candidate_id
+    state = "OR"
     cycle  <- 2018
 }
-if (FALSE ) {
-  after_restart()
-}
 
 
-# need these to work
-# cand_name  <- "Bonamici" 
-# cand_party  <- "D"
-#
-get_legislators(arg=arg, get_os_key())
+#get_legislators(state=state, get_os_key())
 SKIP_previously_tested  <- FALSE	  
 SKIP_slow  <- FALSE		 
 
 test_that("state example",{
-            arg = "OR"
-						t  <- get_legislators(arg=arg, get_os_key() )
+						t  <- get_legislators("OR", get_os_key() )
 						t
 })
 
 test_that("cid example",{
-            arg  <- "N00033474"
-						t  <- get_legislators(arg=arg, get_os_key() )
+            state  <- "N00033474"
+						t  <- get_legislators(state=state, get_os_key() )
             t
 })
 test_that("state", {

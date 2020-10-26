@@ -17,6 +17,7 @@ if (FALSE ) {
 
 
 test_that("cand_sector", {
+  candidate_id  <- "N00033474"
   cand_sector(candidate_id=candidate_id, cycle=cycle, api=get_os_key())
   expect_silent(cand_sector(candidate_id=candidate_id,
                                      cycle=cycle,
